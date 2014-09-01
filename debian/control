@@ -1,0 +1,16 @@
+Source: indicator-workspaces
+Section: utils
+Priority: optional
+Maintainer: Dyson Simmons <dysonsimmons@gmail.com>
+Build-Depends: debhelper (>= 9), python3
+Standards-Version: 3.9.5
+X-Python3-Version: >= 3.2
+Homepage: https://github.com/dyson/indicator-workspaces
+Vcs-Git: https://github.com/dyson/indicator-workspaces.git
+Vcs-Browser: https://github.com/dyson/indicator-workspaces
+
+Package: indicator-workspaces
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: Elementary OS Workspace Indicator
+ Configure workspaces and interact with them in the panel.

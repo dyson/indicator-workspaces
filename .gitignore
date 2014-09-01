@@ -1,0 +1,4 @@
+debian/files
+debian/indicator-workspaces.debhelper.log
+debian/indicator-workspaces.substvars
+debian/indicator-workspaces/

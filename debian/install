@@ -1,0 +1,12 @@
+indicator-workspaces usr/share/indicator-workspaces/
+usr/share/icons/hicolor/scalable/apps/indicator-workspaces.svg
+usr/share/icons/hicolor/scalable/status/indicator-workspaces-1.svg
+usr/share/icons/hicolor/scalable/status/indicator-workspaces-2.svg
+usr/share/icons/hicolor/scalable/status/indicator-workspaces-3.svg
+usr/share/icons/hicolor/scalable/status/indicator-workspaces-4.svg
+usr/share/icons/hicolor/scalable/status/indicator-workspaces-5.svg
+usr/share/icons/hicolor/scalable/status/indicator-workspaces-6.svg
+usr/share/icons/hicolor/scalable/status/indicator-workspaces-7.svg
+usr/share/icons/hicolor/scalable/status/indicator-workspaces-8.svg
+usr/share/icons/hicolor/scalable/status/indicator-workspaces-9.svg
+etc/xdg/autostart/indicator-workspaces.desktop
