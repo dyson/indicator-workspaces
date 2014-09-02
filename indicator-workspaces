@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 # TODO: Connect to wokspace changes (names, number of workspaces etc)
 # TODO: Work with dynamic workspaces

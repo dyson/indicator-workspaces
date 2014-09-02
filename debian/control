@@ -11,6 +11,6 @@ Vcs-Browser: https://github.com/dyson/indicator-workspaces
 
 Package: indicator-workspaces
 Architecture: all
-Depends: ${misc:Depends}, ${python3:Depends}
+Depends: python3, python-wnck, ${misc:Depends}
 Description: Elementary OS Workspace Indicator
  Configure workspaces and interact with them in the panel.
