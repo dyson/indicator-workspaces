@@ -1,0 +1,141 @@
+body {
+  background-color: #F5F5F5;
+  font-family: 'Muli', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: #393733;
+}
+
+
+#jumbotron-background {
+  background-image: url('../images/panel-background.png');
+  background-repeat: repeat-x;
+  background-color: #e9b96e;
+}
+#jumbotron-background .grid-pad {
+  padding: 0 0 60px 0;
+}
+#jumbotron {
+  margin: 0 auto;
+  text-align: center;
+}
+#jumbotron img {
+  display: inline-block;
+  vertical-align: middle;
+}
+#jumbotron span {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 50px 100px 0 0;
+}
+#jumbotron h1 {
+  margin-top: 10px;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 0px;
+  font-size: 36pt;
+  color: #ffffff;
+  font-weight: 300;
+}
+#jumbotron h2 {
+  margin: 0;
+  text-align: left;
+  font-size: 24pt;
+  font-weight: 300;
+}
+#jumbotron a.button, a.button:active, a.button:visited {
+  font-size: 12pt;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+}
+#jumbotron a.button:hover{
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #e9b96e;
+}
+
+.grid-pad {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+[class*='col-'] {
+  padding-right: 40px;
+}
+
+.content h1 {
+  font-weight: 300;
+  line-height: 150%;
+  text-align: center;
+}
+.content h2 {
+  font-weight: 300;
+  line-height: 150%;
+  text-align: center;
+}
+.content h2 i {
+  font-size: 30pt;
+}
+.content {
+  font-size: 12pt;
+  line-height: 20pt;
+}
+a, a:hover, a:active, a:visited {
+  color: #449FDD;
+  text-decoration: none;
+  border-bottom: 1px dotted;
+}
+
+.pull-right {
+  float: right;
+}
+
+hr {
+    background-color: #666666;
+    border: 0 none;
+    height: 1px;
+    width: 100px;
+    margin: 50px auto 40px auto;
+}
+
+@media handheld, only screen and (max-width: 940px) {
+  #jumbotron img {
+    margin: 0;
+  }
+  #jumbotron h1 {
+    margin-top: 10px;
+    text-align: center;
+  }
+  #jumbotron h2 {
+    text-align: center;
+  }
+}
+
+@media handheld, only screen and (max-width: 768px) {
+  #jumbotron img {
+    max-width: 150px;
+    height:auto;
+  }
+  #jumbotron h1 {
+    font-size: 36pt;
+  }
+  #jumbotron h2 {
+    font-size: 20pt;
+  }
+  .content-dark h1 {
+    font-size: 20pt;
+  }
+
+  .content-dark h2 {
+    font-size: 18pt;
+  }
+
+  #footer {
+    text-align: center;
+  }
+  #footer .pull-right {
+    margin: 20px auto;
+    display: block;
+    float: none;
+  }
+}
