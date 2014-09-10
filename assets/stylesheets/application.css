@@ -4,11 +4,11 @@ body {
   color: #393733;
 }
 
-
 #jumbotron-background {
   background-image: url('../images/panel-background.png');
   background-repeat: repeat-x;
   background-color: #e9b96e;
+  overflow: hidden;
 }
 #jumbotron-background .grid-pad {
   padding: 0 0 60px 0;
@@ -16,6 +16,7 @@ body {
 #jumbotron {
   margin: 0 auto;
   text-align: center;
+  white-space: nowrap;
 }
 #jumbotron img {
   display: inline-block;
@@ -24,7 +25,7 @@ body {
 #jumbotron span {
   display: inline-block;
   vertical-align: middle;
-  margin: 50px 100px 0 0;
+  margin: 50px 100px 0 30px;
 }
 #jumbotron h1 {
   margin-top: 10px;
@@ -55,11 +56,16 @@ body {
   color: #e9b96e;
 }
 
-.grid-pad {
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
 [class*='col-'] {
+  float: left;
+  padding-right: 40px;
+}
+
+.grid-pad {
+  padding: 40px 0 40px 40px;
+}
+
+.grid-pad > [class*='col-']:last-of-type {
   padding-right: 40px;
 }
 
@@ -91,43 +97,60 @@ a, a:hover, a:active, a:visited {
 }
 
 hr {
-    background-color: #666666;
-    border: 0 none;
-    height: 1px;
-    width: 100px;
-    margin: 50px auto 40px auto;
+  background-color: #666666;
+  border: 0 none;
+  height: 1px;
+  width: 100px;
+  margin: 0 auto;
 }
 
-@media handheld, only screen and (max-width: 940px) {
-  #jumbotron img {
-    margin: 0;
-  }
-  #jumbotron h1 {
-    margin-top: 10px;
-    text-align: center;
-  }
-  #jumbotron h2 {
-    text-align: center;
-  }
+.center {
+  text-align: center;
+}
+
+#footer {
+  background-color: #e2e2e2;
 }
 
 @media handheld, only screen and (max-width: 768px) {
-  #jumbotron img {
-    max-width: 150px;
-    height:auto;
+  #jumbotron-background {
+    background-image: none;
+  }
+  #jumbotron img#screenshot {
+    display: none;
+  }
+  #jumbotron span {
+    margin: 30px 0 0 0;
   }
   #jumbotron h1 {
-    font-size: 36pt;
+    font-size: 30pt;
   }
   #jumbotron h2 {
     font-size: 20pt;
   }
-  .content-dark h1 {
-    font-size: 20pt;
+  h1 {
+    font-size: 18pt;
+  }
+  h2 {
+    font-size: 14pt;
   }
 
-  .content-dark h2 {
-    font-size: 18pt;
+  img {
+    max-width: 100%;
+  }
+
+  [class*='col-'] {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .grid-pad {
+    padding: 20px 20px 10px 20px;
+  }
+
+  .grid-pad > [class*='col-']:last-of-type {
+    padding-right: 0;
   }
 
   #footer {

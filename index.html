@@ -15,12 +15,12 @@
     <div id="jumbotron-background">
       <div class="grid grid-pad">
         <div id="jumbotron">
-          <span>
+          <span id="heading">
             <img src="assets/images/indicator-workspaces.svg">
             <h1>Indicator<br />Workspaces</h1>
-            <a class="button" href="#"><i class="fa fa-download"></i> Download v0.0.1</a>
+            <a class="button" href="https://github.com/dyson/indicator-workspaces/releases/download/v0.1/indicator-workspaces_0.1_all.deb"><i class="fa fa-download"></i> Download v0.1</a>
           </span>
-          <img src="assets/images/indicator-workspaces-screenshot.png">
+          <img id="screenshot" src="assets/images/indicator-workspaces-screenshot.png">
         </div>
       </div>
     </div>
@@ -28,9 +28,30 @@
   <div class="content">
     <div class="grid grid-pad">
       <div class="col-1-1">
-        <h1>Elementary OS Workspace Indicator.</h1>
+        <h1>Elementary OS Workspace Indicator.<br>Configure workspaces and interact with them in the panel.</h1>
         <h2>Indicator Workspaces is open source. It's hosted, developed, and maintained on <a href="https://github.com/dyson/indicator-workspaces">GitHub</a>.</h2>
-        <hr>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="content">
+    <div class="grid grid-pad">
+      <div class="col-1-2">
+        <h2>Installing</h2>
+        <p>Indicator Workspaces is distributed as a Debain package file (.deb). The latest stable release can always be <a href="https://github.com/dyson/indicator-workspaces/releases/download/v0.1/indicator-workspaces_0.1_all.deb">downloaded</a> from this page.</p>
+        <p>To install either open the downloaded file, or navigate to the file in the terminal and run:</p>
+        <p><em>$ sudo debpkg -i indicator-workspaces_0.1_all.deb</em></p>
+        <p>Once installed, you will need to log out and back in for the indicator to appear.</p>
+        <p>You can also view the source code and install it manually via <a href="https://github.com/dyson/indicator-workspaces">GitHub</a>.</p>
+
+        <h2>Upgrading</h2>
+        <p>Downloading and installing the latest verion will overwrite the currently installed version. You will need to log out and back in for the new indicator to run.</p>
+      </div>
+      <div class="col-1-2">
+        <h2>Using &amp; Configuring</h2>
+        <p>Indicator Workspaces works with both dynamic workspaces and well as a fixed number of workspaces.</p>
+        <p>Workspaces from 1 - 9 can be named manually through the preferences. If a workspace doesn't have a name, it is given one in the form of 'Workspace (Number)'. Changes to the workspaces are applied immediately.</p>
+        <p class="center"><img src="assets/images/indicator-workspaces-screenshot-preferences.png"></p>
       </div>
     </div>
   </div>
