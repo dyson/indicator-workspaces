@@ -1,12 +1,9 @@
 #!/usr/bin/python3
 
-# TODO: Connect to wokspace changes (names?)
-# TODO: Preferences window where you can set dynamic, number of workspaces and workspace names, show workspace names as label next to icon
-
 import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, AppIndicator3, Wnck
-from gi.repository.Gio import Settings
+from gi.repository.Gio import Settings, SettingsBindFlags
 from gi.repository.GLib import Variant
 
 import fcntl
@@ -20,8 +17,6 @@ class IndicatorWorkspaces:
 
   def __new__(cls, *args, **kwargs):
     IndicatorWorkspaces._check_running()
-#    IndicatorWorkspaces._check_dynamic_workspaces()
-
     return super(IndicatorWorkspaces, cls).__new__(cls)
 
   def __init__(self):
@@ -37,7 +32,7 @@ class IndicatorWorkspaces:
     self.icon = WorkspacesIcon()
 
     # Create Menu
-    self.create_menu(None, None)
+    self.create_menu()
 
     # Connect screen to active workspace changed
     self.screen.connect('active-workspace-changed', self.set_active_workspace)
@@ -45,7 +40,7 @@ class IndicatorWorkspaces:
     self.screen.connect('workspace-destroyed', self.create_menu)
 
     # Set active workspace
-    self.set_active_workspace(None, None)
+    self.set_active_workspace()
 
   def _check_running():
     lockfile_path = os.path.normpath(tempfile.gettempdir() + '/' + os.path.basename(__file__) + '.lock')
@@ -56,12 +51,18 @@ class IndicatorWorkspaces:
       print("\nAnother instance is already running, quitting.")
       sys.exit(-1)
 
-  def create_menu(self, screen, workspace):
-    self.menu = WorkspacesMenu(self.screen)
+  def create_menu(self, *args):
+    self.menu = WorkspacesMenu(self)
     self.menu.show_all()
     self.indicator.set_menu(self.menu)
 
-  def set_active_workspace(self, screen, previous_workspace):
+  def create_workspace_preferences(self, *args):
+    try:
+      self.workspaces_preferences
+    except:
+      self.workspaces_preferences = WorkspacesPreferences(self)
+
+  def set_active_workspace(self, *args):
     self.workspace_active = self.screen.get_active_workspace()
     workspace_active_number = self.workspace_active.get_number()
     self.menu.workspaces_list[workspace_active_number].set_active(True)
@@ -75,24 +76,26 @@ class WorkspacesIcon():
 
 class WorkspacesMenu(Gtk.Menu):
 
-  def __init__(self, screen):
+  def __init__(self, parent):
     Gtk.Menu.__init__(self)
 
-    self.screen = screen
+    self.parent = parent
 
-    # Get workspace-names
-    workspace_names_settings = Settings.new("org.gnome.desktop.wm.preferences")
-    workspace_names_key = "workspace-names"
-    workspace_names = workspace_names_settings.get_value(workspace_names_key).unpack()
+    # Get workspace names
+    setting = Settings.new("org.gnome.desktop.wm.preferences")
+    workspace_names = setting.get_value("workspace-names").unpack()
 
-    # Generate workspace names if none exist (should we really save them or just keep them in memory?)
-    workspace_count = self.screen.get_workspace_count()
+    # Generate workspace names if none exist
+    workspace_count = self.parent.screen.get_workspace_count()
     workspace_names_count = len(workspace_names)
+
+    # Fill in any missing workspace names
     if workspace_names_count < workspace_count:
-      while workspace_names_count <= workspace_count:
-        workspace_names_count += 1
-        workspace_names.append("Workspace %d" % (workspace_names_count))
-      # workspace_names_settings.set_value(workspace_names_key, Variant("as", workspace_names))
+      workspace_names += [''] * (workspace_names_count - workspace_count)
+
+    for index, workspace_name in enumerate(workspace_names):
+      if workspace_name == '':
+        workspace_names[index] = "Workspace %d" % (workspace_names_count)
 
     # Create items for the menu from the workspace names
     self.workspaces_list = []
@@ -106,21 +109,73 @@ class WorkspacesMenu(Gtk.Menu):
         self.append(self.workspaces_list[number])
 
     # Add separator
-    # separator = Gtk.SeparatorMenuItem()
-    # self.append(separator)
+    separator = Gtk.SeparatorMenuItem()
+    self.append(separator)
 
     # Add quit button
-    # quit = Gtk.MenuItem("Quit")
-    # quit.connect("activate",self.quit)
-    # self.append(quit)
+    preferences = Gtk.MenuItem("Preferences")
+    preferences.connect("activate",self.parent.create_workspace_preferences)
+    self.append(preferences)
 
-  def switch_to_desktop(self, obj, number):
+  def switch_to_desktop(self, workspace, number):
     if self.workspaces_list[number].get_active():
       timestamp = int(time.time())
-      self.screen.get_workspace(number).activate(timestamp)
+      self.parent.screen.get_workspace(number).activate(timestamp)
 
-  def quit(self, widget, data=None):
-    Gtk.main_quit()
+class WorkspacesPreferences():
+  def __init__(self, parent):
+    self.parent = parent
+
+    builder = Gtk.Builder()
+    builder.add_from_file(os.path.abspath(os.path.dirname(__file__)) + "/" + "indicator-workspaces-preferences.glade")
+
+    # Dynamic workspaces
+    setting = Settings.new("org.pantheon.desktop.gala.behavior")
+    self.switch_dyanamic_workspaces = builder.get_object("switch-dynamic-workspaces")
+    setting.bind("dynamic-workspaces", self.switch_dyanamic_workspaces, 'active', SettingsBindFlags.DEFAULT)
+
+    # Number of workspaces
+    setting = Settings.new("org.gnome.desktop.wm.preferences")
+    self.spin_button_number_of_workspaces = builder.get_object("spin-button-number-of-workspaces")
+    self.label_number_of_workspaces = builder.get_object("label-number-of-workspaces")
+    self.label_number_of_workspaces.set_sensitive(not self.switch_dyanamic_workspaces.get_active())
+    self.spin_button_number_of_workspaces.set_sensitive(not self.switch_dyanamic_workspaces.get_active())
+    setting.bind("num-workspaces", self.spin_button_number_of_workspaces, 'value', SettingsBindFlags.DEFAULT)
+
+    # Workspace names
+    setting = Settings.new("org.gnome.desktop.wm.preferences")
+    workspace_names = setting.get_value("workspace-names").unpack()
+    self.entry_workspaces = []
+    # Get workspaces
+    for i in range(1, 10):
+      self.entry_workspaces.append(builder.get_object("entry-workspace-%d" % i))
+    # Populate workspace names
+    for index, workspace_name in enumerate(workspace_names):
+      self.entry_workspaces[index].set_text(workspace_name)
+
+    self.window = builder.get_object("window")
+    self.window.show_all()
+
+    builder.connect_signals(self)
+
+  def on_switch_dynamic_workspaces_active(self, switch, *args):
+    self.label_number_of_workspaces.set_sensitive(not switch.get_active())
+    self.spin_button_number_of_workspaces.set_sensitive(not switch.get_active())
+
+  def on_entry_workspace_text(self, entry, *args):
+    workspace_names = []
+    for workspace in self.entry_workspaces:
+      workspace_names.append(workspace.get_text())
+    setting = Settings.new("org.gnome.desktop.wm.preferences")
+    setting.set_value("workspace-names", Variant("as", workspace_names))
+    self.parent.create_menu()
+
+  def on_close_clicked(self, *args):
+    self.window.destroy()
+
+  # Delete preferences object on destroy
+  def on_destroy(self, *args):
+    del self.parent.workspaces_preferences
 
 if __name__ == "__main__":
   indicator = IndicatorWorkspaces()

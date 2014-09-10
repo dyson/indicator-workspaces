@@ -1,4 +1,5 @@
 indicator-workspaces usr/share/indicator-workspaces/
+indicator-workspaces-preferences.glade usr/share/indicator-workspaces/
 usr/share/icons/hicolor/scalable/apps/indicator-workspaces.svg
 usr/share/icons/hicolor/scalable/status/indicator-workspaces-1.svg
 usr/share/icons/hicolor/scalable/status/indicator-workspaces-2.svg
