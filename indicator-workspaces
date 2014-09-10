@@ -71,7 +71,10 @@ class IndicatorWorkspaces:
 
 class WorkspacesIcon():
   def set(self, indicator, workspace_number = None):
-    ic = "indicator-workspaces-%d" % (workspace_number+1)
+    if workspace_number + 1 > 9:
+      ic = "indicator-workspaces-infinite"
+    else:
+      ic = "indicator-workspaces-%d" % (workspace_number+1)
     indicator.set_icon(ic)
 
 class WorkspacesMenu(Gtk.Menu):
@@ -91,11 +94,11 @@ class WorkspacesMenu(Gtk.Menu):
 
     # Fill in any missing workspace names
     if workspace_names_count < workspace_count:
-      workspace_names += [''] * (workspace_names_count - workspace_count)
+      workspace_names += [''] * (workspace_count - workspace_names_count)
 
     for index, workspace_name in enumerate(workspace_names):
       if workspace_name == '':
-        workspace_names[index] = "Workspace %d" % (workspace_names_count)
+        workspace_names[index] = "Workspace %d" % (index + 1)
 
     # Create items for the menu from the workspace names
     self.workspaces_list = []

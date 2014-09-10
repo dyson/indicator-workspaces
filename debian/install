@@ -10,4 +10,5 @@ usr/share/icons/hicolor/scalable/status/indicator-workspaces-6.svg
 usr/share/icons/hicolor/scalable/status/indicator-workspaces-7.svg
 usr/share/icons/hicolor/scalable/status/indicator-workspaces-8.svg
 usr/share/icons/hicolor/scalable/status/indicator-workspaces-9.svg
+usr/share/icons/hicolor/scalable/status/indicator-workspaces-infinite.svg
 etc/xdg/autostart/indicator-workspaces.desktop

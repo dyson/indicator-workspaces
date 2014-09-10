@@ -1,3 +1,12 @@
+indicator-workspaces (0.2) unstable; urgency=low
+
+  * Added support for 36 workspaces
+  * Added infinite status icon for workspaces > 9
+  * Fixed naming of workspaces when no names are in dconf
+  * Fixed sizing of close button in prefernces
+
+ -- Dyson Simmons <dysosimmonsn@gmail.com>  Thu, 11 Sep 2014 09:14:10 +1000
+
 indicator-workspaces (0.1) unstable; urgency=low
 
   * Initial release
