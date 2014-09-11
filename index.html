@@ -18,7 +18,7 @@
           <span id="heading">
             <img src="assets/images/indicator-workspaces.svg">
             <h1>Indicator<br />Workspaces</h1>
-            <a class="button" href="https://github.com/dyson/indicator-workspaces/releases/download/v0.1/indicator-workspaces_0.1_all.deb"><i class="fa fa-download"></i> Download v0.1</a>
+            <a class="button" href="https://github.com/dyson/indicator-workspaces/releases/download/v0.2/indicator-workspaces_0.2_all.deb"><i class="fa fa-download"></i> Download v0.2</a>
           </span>
           <img id="screenshot" src="assets/images/indicator-workspaces-screenshot.png">
         </div>
@@ -38,7 +38,7 @@
     <div class="grid grid-pad">
       <div class="col-1-2">
         <h2>Installing</h2>
-        <p>Indicator Workspaces is distributed as a Debain package file (.deb). The latest stable release can always be <a href="https://github.com/dyson/indicator-workspaces/releases/download/v0.1/indicator-workspaces_0.1_all.deb">downloaded</a> from this page.</p>
+        <p>Indicator Workspaces is distributed as a Debain package file (.deb). The latest stable release can always be <a href="https://github.com/dyson/indicator-workspaces/releases/download/v0.2/indicator-workspaces_0.2_all.deb">downloaded</a> from this page.</p>
         <p>To install either open the downloaded file, or navigate to the file in the terminal and run:</p>
         <p><em>$ sudo debpkg -i indicator-workspaces_0.1_all.deb</em></p>
         <p>Once installed, you will need to log out and back in for the indicator to appear.</p>
@@ -46,12 +46,36 @@
 
         <h2>Upgrading</h2>
         <p>Downloading and installing the latest verion will overwrite the currently installed version. You will need to log out and back in for the new indicator to run.</p>
+
+        <h2>Removing</h2>
+        <p>To remove Indicator Workspaces open the terminal and run:</p>
+        <p><em>$ sudo apt-get remove indicator-workspaces</em></p>
+        <p>When removing Indicator Workspaces, all preferences are kept in the system. You should set the prefernces you would like to keep be removing.</p>
+        <p>The following commands when entered into the terminal will reset the preferences back to the Elementary OS defaults:</p>
+        <p><em>$ gsettings set org.pantheon.desktop.gala.behavior dynamic-workspaces true</em></p>
+        <p><em>$ gsettings set org.gnome.desktop.wm.preferences num-workspaces 4</em></p>
+        <p><em>$ gsettings set org.gnome.desktop.wm.preferences workspace-names "[]"</em></p>
       </div>
       <div class="col-1-2">
         <h2>Using &amp; Configuring</h2>
-        <p>Indicator Workspaces works with both dynamic workspaces and well as a fixed number of workspaces.</p>
-        <p>Workspaces from 1 - 9 can be named manually through the preferences. If a workspace doesn't have a name, it is given one in the form of 'Workspace (Number)'. Changes to the workspaces are applied immediately.</p>
+        <p>Indicator Workspaces works with both dynamic workspaces and well as a fixed number of workspaces. A maximum of 36 workspaces is supported.</p>
+        <p>Workspaces from 1 - 9 can be named manually through the preferences. If a workspace doesn't have a name, it is given one in the form of 'Workspace (Number)'.</p>
+        <p>If you wish to name more than 9 workspaces, you can do this from the terminal. The following will name 12 workspaces by their number:</p>
+        <p><em>$ gsettings set org.gnome.desktop.wm.preferences workspace-names "['1','2','3','4','5','6','7','8','9','10','11','12']"</em></p>
+        <p>Changes to the workspaces are applied immediately.</p>
         <p class="center"><img src="assets/images/indicator-workspaces-screenshot-preferences.png"></p>
+      </div>
+      <div class="col-1-2">
+        <h2>Changelog</h2>
+          <h3>v0.2</h3>
+          <p>* Added support for 36 workspaces<br>
+          * Added infinite status icon for workspaces > 9<br>
+          * Fixed naming of workspaces when no names are in dconf<br>
+          * Fixed sizing of close button in prefernces</p>
+          <p><em>Thu, 11 Sep 2014 09:14:10 +1000</em></p>
+          <h3>v0.1</h3>
+          <p>* Initial release</p>
+         <p><em>Mon, 01 Sep 2014 10:44:40 +1000</em></p>
       </div>
     </div>
   </div>

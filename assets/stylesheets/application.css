@@ -82,6 +82,10 @@ body {
 .content h2 i {
   font-size: 30pt;
 }
+.content h3 {
+  font-weight: 300;
+  line-height: 150%;
+}
 .content {
   font-size: 12pt;
   line-height: 20pt;
@@ -133,6 +137,9 @@ hr {
   }
   h2 {
     font-size: 14pt;
+  }
+  h3 {
+    font-size: 13pt;
   }
 
   img {
