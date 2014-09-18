@@ -157,8 +157,8 @@ class WorkspacesPreferences():
     for index, workspace_name in enumerate(workspace_names):
       self.entry_workspaces[index].set_text(workspace_name)
 
-    self.window = builder.get_object("window")
-    self.window.show_all()
+    self.dialog = builder.get_object("dialog")
+    self.dialog.show_all()
 
     builder.connect_signals(self)
 
@@ -175,11 +175,9 @@ class WorkspacesPreferences():
     self.parent.create_menu()
 
   def on_close_clicked(self, *args):
-    self.window.destroy()
-
-  # Delete preferences object on destroy
-  def on_destroy(self, *args):
     del self.parent.workspaces_preferences
+    self.dialog.destroy()
+
 
 if __name__ == "__main__":
   signal.signal(signal.SIGINT, signal.SIG_DFL)
