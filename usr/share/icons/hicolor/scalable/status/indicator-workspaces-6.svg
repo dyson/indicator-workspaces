@@ -7,10 +7,34 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
    width="24"
    height="24"
-   id="svg2">
+   id="svg2"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="indicator-workspaces-6.svg">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview3442"
+     showgrid="false"
+     inkscape:zoom="9.8333333"
+     inkscape:cx="12"
+     inkscape:cy="12"
+     inkscape:window-x="0"
+     inkscape:window-y="30"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2" />
   <metadata
      id="metadata15">
     <rdf:RDF>
@@ -19,27 +43,12 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <defs
      id="defs4">
-    <mask
-       id="m">
-      <rect
-         width="24"
-         height="24"
-         x="0"
-         y="0"
-         id="rect7"
-         style="fill:#ffffff" />
-      <text
-         x="7"
-         y="15.5"
-         id="text9"
-         style="font-size:9px;font-weight:500;fill:#000000;font-family:Open Sans">Ar</text>
-    </mask>
     <mask
        id="mask4336">
       <g

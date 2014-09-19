@@ -14,7 +14,7 @@
    height="24"
    id="svg2"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="indicator-workspaces-4.svg">
+   sodipodi:docname="indicator-workspaces-22.svg">
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -24,16 +24,16 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="640"
-     inkscape:window-height="480"
-     id="namedview3414"
+     inkscape:window-width="1680"
+     inkscape:window-height="995"
+     id="namedview3030"
      showgrid="false"
-     inkscape:zoom="9.8333333"
+     inkscape:zoom="32.708333"
      inkscape:cx="12"
      inkscape:cy="12"
      inkscape:window-x="0"
      inkscape:window-y="30"
-     inkscape:window-maximized="0"
+     inkscape:window-maximized="1"
      inkscape:current-layer="svg2" />
   <metadata
      id="metadata15">
@@ -43,41 +43,41 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <defs
      id="defs4">
     <mask
-       id="mask4019">
+       maskUnits="userSpaceOnUse"
+       id="mask4320">
       <g
-         id="g4021">
+         id="g4322"
+         mask="none">
         <rect
+           mask="none"
+           style="fill:#ffffff;fill-opacity:1;stroke:none"
+           id="rect4324"
            width="24"
            height="24"
            x="0"
-           y="0"
-           id="rect4023"
-           style="fill:#ffffff" />
+           y="0" />
         <text
-           x="9.4226074"
-           y="15.22998"
-           id="text4025"
-           style="font-size:9px;font-weight:500;fill:#000000;font-family:Open Sans">4</text>
+           style="font-size:9px;font-weight:500;fill:#000000;font-family:Open Sans"
+           id="text4326"
+           y="15.212402"
+           x="6.8737793">22</text>
       </g>
     </mask>
   </defs>
-  <g
-     id="layer2">
-    <rect
-       width="16"
-       height="16"
-       rx="2"
-       x="4"
-       y="4"
-       mask="url(#mask4019)"
-       id="rect11-2"
-       style="fill:#ffffff" />
-  </g>
+  <rect
+     style="fill:#ffffff;fill-opacity:1;stroke:none"
+     id="rect3100"
+     width="16"
+     height="16"
+     x="4"
+     y="4"
+     rx="2"
+     mask="url(#mask4320)" />
 </svg>

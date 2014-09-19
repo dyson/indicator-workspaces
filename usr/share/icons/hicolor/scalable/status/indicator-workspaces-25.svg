@@ -14,7 +14,7 @@
    height="24"
    id="svg2"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="indicator-workspaces-infinite.svg">
+   sodipodi:docname="indicator-workspaces-24.svg">
   <sodipodi:namedview
      pagecolor="#ffffff"
      bordercolor="#666666"
@@ -26,10 +26,10 @@
      inkscape:pageshadow="2"
      inkscape:window-width="1680"
      inkscape:window-height="995"
-     id="namedview3059"
+     id="namedview3030"
      showgrid="false"
      inkscape:zoom="32.708333"
-     inkscape:cx="8.2394904"
+     inkscape:cx="12"
      inkscape:cy="12"
      inkscape:window-x="0"
      inkscape:window-y="30"
@@ -50,31 +50,34 @@
   <defs
      id="defs4">
     <mask
-       id="mask4467">
+       maskUnits="userSpaceOnUse"
+       id="mask4410">
       <g
-         id="g4469">
+         mask="none"
+         id="g4412">
         <rect
-           width="24"
-           height="24"
-           x="0"
            y="0"
-           id="rect4471"
-           style="fill:#ffffff" />
+           x="0"
+           height="24"
+           width="24"
+           id="rect4414"
+           style="fill:#ffffff;fill-opacity:1;stroke:none"
+           mask="none" />
         <text
-           x="7.1199999"
-           y="16.875"
-           id="text4473"
-           style="font-size:14px;font-weight:500;fill:#000000;font-family:Open Sans">∞</text>
+           x="6.8913574"
+           y="15.212402"
+           id="text4416"
+           style="font-size:9px;font-weight:500;fill:#000000;font-family:Open Sans">25</text>
       </g>
     </mask>
   </defs>
   <rect
-     style="fill:#ffffff"
-     id="rect11-2"
-     mask="url(#mask4467)"
-     y="4"
-     x="4"
-     rx="2"
+     style="fill:#ffffff;fill-opacity:1;stroke:none"
+     id="rect3100"
+     width="16"
      height="16"
-     width="16" />
+     x="4"
+     y="4"
+     rx="2"
+     mask="url(#mask4410)" />
 </svg>

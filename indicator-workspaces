@@ -72,10 +72,7 @@ class IndicatorWorkspaces:
 
 class WorkspacesIcon():
   def set(self, indicator, workspace_number = None):
-    if workspace_number + 1 > 9:
-      ic = "indicator-workspaces-infinite"
-    else:
-      ic = "indicator-workspaces-%d" % (workspace_number+1)
+    ic = "indicator-workspaces-%d" % (workspace_number+1)
     indicator.set_icon(ic)
 
 class WorkspacesMenu(Gtk.Menu):
