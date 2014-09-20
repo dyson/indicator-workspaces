@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Indicator Workspaces
+Comment=Configure workspaces and interact with them in the panel.
+Icon=indicator-workspaces
+Exec=/usr/share/indicator-workspaces/indicator-workspaces
+OnlyShowIn=Unity;GNOME;Pantheon;
+NoDisplay=true
+StartupNotify=false
+Terminal=false
+X-Ubuntu-Gettext-Domain=indicator-workspaces

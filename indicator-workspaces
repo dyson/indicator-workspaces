@@ -172,9 +172,11 @@ class WorkspacesPreferences():
     self.parent.create_menu()
 
   def on_close_clicked(self, *args):
-    del self.parent.workspaces_preferences
     self.dialog.destroy()
 
+  # Delete preferences object on destroy
+  def on_dialog_destroy(self, *args):
+    del self.parent.workspaces_preferences
 
 if __name__ == "__main__":
   signal.signal(signal.SIGINT, signal.SIG_DFL)
