@@ -1,3 +1,12 @@
+indicator-workspaces (0.3) unstable; urgency=low
+
+  * Added application icon and desktop file
+  * Added icons for workspaces 10 - 36
+  * Catches SIGINT for easier development
+  * Preferences window is now a dialog window and conforms better to the HIG
+
+ -- Dyson Simmons <dysosimmonsn@gmail.com>  Wed, 24 Sep 2014 12:40:13 +1000
+
 indicator-workspaces (0.2) unstable; urgency=low
 
   * Added support for 36 workspaces
