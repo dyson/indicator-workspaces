@@ -11,7 +11,7 @@ body {
   overflow: hidden;
 }
 #jumbotron-background .grid-pad {
-  padding: 0 0 60px 0;
+  padding: 0 0 40px 0;
 }
 #jumbotron {
   margin: 0 auto;
@@ -22,6 +22,9 @@ body {
   display: inline-block;
   vertical-align: middle;
 }
+#jumbotron img#screenshot-small {
+    display: none;
+  }
 #jumbotron span {
   display: inline-block;
   vertical-align: middle;
@@ -123,6 +126,10 @@ hr {
   #jumbotron img#screenshot {
     display: none;
   }
+  #jumbotron img#screenshot-small {
+    display: block;
+    margin: 40px auto 0 auto;
+  }
   #jumbotron span {
     margin: 30px 0 0 0;
   }
@@ -153,7 +160,7 @@ hr {
   }
 
   .grid-pad {
-    padding: 20px 20px 10px 20px;
+    padding: 40px 20px 40px 20px;
   }
 
   .grid-pad > [class*='col-']:last-of-type {
