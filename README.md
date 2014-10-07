@@ -4,13 +4,29 @@ Configure workspaces and interact with them in the panel.
 
 ----
 
-#### Requirements to Build
+If you are just wanting to install and use Indicator Workspaces, go to the [website](http://dysonsimmons.com/indicator-workspaces/) and download the latest version.
 
-TODO
+#### Developing
 
-#### Installation
+It is recommended that you first install the latest version before development as the icons need to be installed for them to load. You can then modify the indicator-workspaces file directly and run it directly from the command line during development. If you want to build and install your changes, they need to be commited in the git repository. Create your own branch, commit your changes and then build from your branch.
 
-TODO
+##### Requirements to Build/Run
+
+```bash
+$ sudo apt-get install devscripts debhelper python3
+```
+
+##### Building
+
+```bash
+$ debuild -us -us
+```
+
+##### Installing
+
+```bash
+$ sudo debpkg -i indicator-workspaces_0.3_all.deb
+```
 
 #### License
 
