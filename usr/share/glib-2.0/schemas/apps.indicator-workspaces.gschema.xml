@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="apps.indicator-workspaces" path="/apps/indicator-workspaces/">
+    <key type="b" name="show-label">
+      <default>true</default>
+      <summary>Show Label</summary>
+      <description>Shows the text label next to the indicator icon if true.</description>
+    </key>
+  </schema>
+</schemalist>

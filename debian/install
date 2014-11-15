@@ -41,4 +41,5 @@ usr/share/icons/hicolor/48x48/apps/indicator-workspaces.svg
 usr/share/icons/hicolor/64x64/apps/indicator-workspaces.svg
 usr/share/icons/hicolor/128x128/apps/indicator-workspaces.svg
 usr/share/applications/indicator-workspaces.desktop
+usr/share/glib-2.0/schemas/apps.indicator-workspaces.gschema.xml
 etc/xdg/autostart/indicator-workspaces.desktop

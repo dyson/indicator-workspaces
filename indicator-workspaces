@@ -22,12 +22,15 @@ class IndicatorWorkspaces:
 
   def __init__(self):
     # Create Indicator
-    self.indicator = AppIndicator3.Indicator.new("indicator-eos-workspaces", "", AppIndicator3.IndicatorCategory.APPLICATION_STATUS)
+    self.indicator = AppIndicator3.Indicator.new("indicator-workspaces", "", AppIndicator3.IndicatorCategory.APPLICATION_STATUS)
     self.indicator.set_status (AppIndicator3.IndicatorStatus.ACTIVE)
 
     # Create Screen
     self.screen = Wnck.Screen.get_default()
     self.screen.force_update()
+
+    # Get workspace settings
+    self.settings = WorkspacesSettings(self)
 
     # Create Icon
     self.icon = WorkspacesIcon()
@@ -68,7 +71,28 @@ class IndicatorWorkspaces:
     workspace_active_number = self.workspace_active.get_number()
     self.menu.workspaces_list[workspace_active_number].set_active(True)
     self.icon.set(self.indicator, workspace_active_number)
-    self.indicator.set_label(self.menu.workspaces_list[workspace_active_number].get_label(), "")
+    if self.settings.get_show_label() == True:
+      self.indicator.set_label(self.menu.workspaces_list[workspace_active_number].get_label(), "")
+    else:
+      self.indicator.set_label("", "")
+
+class WorkspacesSettings():
+  def __init__(self, indicator):
+    self.settings = Settings.new("apps.indicator-workspaces")
+    self.settings.connect("changed::show-label", self.update_show_label)
+
+    self.indicator = indicator
+    self.set_show_label()
+
+  def set_show_label(self):
+    self.show_label = self.settings.get_boolean("show-label")
+
+  def update_show_label(self, settings, key):
+    self.set_show_label()
+    self.indicator.set_active_workspace()
+
+  def get_show_label(self):
+    return self.show_label
 
 class WorkspacesIcon():
   def set(self, indicator, workspace_number = None):
@@ -77,17 +101,17 @@ class WorkspacesIcon():
 
 class WorkspacesMenu(Gtk.Menu):
 
-  def __init__(self, parent):
+  def __init__(self, indicator):
     Gtk.Menu.__init__(self)
 
-    self.parent = parent
+    self.indicator = indicator
 
     # Get workspace names
     setting = Settings.new("org.gnome.desktop.wm.preferences")
     workspace_names = setting.get_value("workspace-names").unpack()
 
     # Generate workspace names if none exist
-    workspace_count = self.parent.screen.get_workspace_count()
+    workspace_count = self.indicator.screen.get_workspace_count()
     workspace_names_count = len(workspace_names)
 
     # Fill in any missing workspace names
@@ -115,17 +139,17 @@ class WorkspacesMenu(Gtk.Menu):
 
     # Add quit button
     preferences = Gtk.MenuItem("Preferences")
-    preferences.connect("activate",self.parent.create_workspace_preferences)
+    preferences.connect("activate",self.indicator.create_workspace_preferences)
     self.append(preferences)
 
   def switch_to_desktop(self, workspace, number):
     if self.workspaces_list[number].get_active():
       timestamp = int(time.time())
-      self.parent.screen.get_workspace(number).activate(timestamp)
+      self.indicator.screen.get_workspace(number).activate(timestamp)
 
 class WorkspacesPreferences():
-  def __init__(self, parent):
-    self.parent = parent
+  def __init__(self, indicator):
+    self.indicator = indicator
 
     builder = Gtk.Builder()
     builder.add_from_file(os.path.abspath(os.path.dirname(__file__)) + "/" + "indicator-workspaces-preferences.glade")
@@ -142,6 +166,11 @@ class WorkspacesPreferences():
     self.label_number_of_workspaces.set_sensitive(not self.switch_dyanamic_workspaces.get_active())
     self.spin_button_number_of_workspaces.set_sensitive(not self.switch_dyanamic_workspaces.get_active())
     setting.bind("num-workspaces", self.spin_button_number_of_workspaces, 'value', SettingsBindFlags.DEFAULT)
+
+    # Show Label
+    setting = Settings.new("apps.indicator-workspaces")
+    self.switch_show_label = builder.get_object("switch-show-label")
+    setting.bind("show-label", self.switch_show_label, 'active', SettingsBindFlags.DEFAULT)
 
     # Workspace names
     setting = Settings.new("org.gnome.desktop.wm.preferences")
@@ -169,14 +198,15 @@ class WorkspacesPreferences():
       workspace_names.append(workspace.get_text())
     setting = Settings.new("org.gnome.desktop.wm.preferences")
     setting.set_value("workspace-names", Variant("as", workspace_names))
-    self.parent.create_menu()
+    self.indicator.create_menu()
+    self.indicator.set_active_workspace()
 
   def on_close_clicked(self, *args):
     self.dialog.destroy()
 
   # Delete preferences object on destroy
   def on_dialog_destroy(self, *args):
-    del self.parent.workspaces_preferences
+    del self.indicator.workspaces_preferences
 
 if __name__ == "__main__":
   signal.signal(signal.SIGINT, signal.SIG_DFL)
