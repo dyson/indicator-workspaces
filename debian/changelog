@@ -1,3 +1,10 @@
+indicator-workspaces (0.4) unstable; urgency=low
+
+  * Added preference for showing/hiding label
+  * Fixed visually updating the label of the current workspace as it is changed
+
+ -- Dyson Simmons <dysosimmonsn@gmail.com>  Sat, 15 Nov 2014 22:28:04 +1000
+
 indicator-workspaces (0.3) unstable; urgency=low
 
   * Added application icon and desktop file

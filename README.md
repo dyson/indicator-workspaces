@@ -19,7 +19,7 @@ $ sudo apt-get install devscripts debhelper python3
 ##### Building
 
 ```bash
-$ debuild -us -us
+$ debuild -us -uc
 ```
 
 ##### Installing
