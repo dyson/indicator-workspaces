@@ -46,15 +46,13 @@ body {
 }
 #jumbotron a.button, a.button:active, a.button:visited {
   font-size: 12pt;
+  font-weight: bold;
   padding: 10px;
-  border: 1px solid #ffffff;
+  border: 2px solid #ffffff;
   border-radius: 5px;
   color: #ffffff;
 }
 #jumbotron a.button:hover{
-  padding: 10px;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
   background-color: #ffffff;
   color: #e9b96e;
 }
