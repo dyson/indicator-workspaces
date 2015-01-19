@@ -1,3 +1,10 @@
+indicator-workspaces (0.5) unstable; urgency=low
+
+  * Fixed double move to workspace bug
+  * Minor preference window glade tweaks
+
+ -- Dyson Simmons <dysosimmonsn@gmail.com>  Mon, 19 Jan 2015 13:27:19 +1000
+
 indicator-workspaces (0.4) unstable; urgency=low
 
   * Added preference for showing/hiding label

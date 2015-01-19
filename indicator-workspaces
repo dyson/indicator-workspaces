@@ -14,6 +14,8 @@ import tempfile
 import time
 import warnings
 
+# TODO: Use Gtk.get_current_event_time() instead of time ?
+
 class IndicatorWorkspaces:
 
   def __new__(cls, *args, **kwargs):
@@ -67,8 +69,7 @@ class IndicatorWorkspaces:
       self.workspaces_preferences = WorkspacesPreferences(self)
 
   def set_active_workspace(self, *args):
-    self.workspace_active = self.screen.get_active_workspace()
-    workspace_active_number = self.workspace_active.get_number()
+    workspace_active_number = self.screen.get_active_workspace().get_number()
     self.menu.workspaces_list[workspace_active_number].set_active(True)
     self.icon.set(self.indicator, workspace_active_number)
     if self.settings.get_show_label() == True:
@@ -137,15 +138,17 @@ class WorkspacesMenu(Gtk.Menu):
     separator = Gtk.SeparatorMenuItem()
     self.append(separator)
 
-    # Add quit button
+    # Add preferences button
     preferences = Gtk.MenuItem("Preferences")
     preferences.connect("activate",self.indicator.create_workspace_preferences)
     self.append(preferences)
 
   def switch_to_desktop(self, workspace, number):
-    if self.workspaces_list[number].get_active():
+    active_workspace = self.indicator.screen.get_active_workspace().get_number()
+    if (self.workspaces_list[number].get_active() and number != active_workspace):
       timestamp = int(time.time())
       self.indicator.screen.get_workspace(number).activate(timestamp)
+
 
 class WorkspacesPreferences():
   def __init__(self, indicator):

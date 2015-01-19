@@ -8,6 +8,7 @@
     <property name="step_increment">1</property>
     <property name="page_increment">1</property>
   </object>
+
   <object class="GtkDialog" id="dialog">
     <property name="can_focus">False</property>
     <property name="resizable">False</property>
@@ -19,14 +20,14 @@
     <property name="has_resize_grip">False</property>
     <signal name="destroy" handler="on_dialog_destroy" swapped="no"/>
     <child internal-child="vbox">
-      <object class="GtkBox" id="dialog-vbox">
+      <object class="GtkBox" id="vbox-dialog">
         <property name="can_focus">False</property>
         <property name="margin_left">5</property>
         <property name="margin_right">5</property>
         <property name="margin_bottom">5</property>
         <property name="orientation">vertical</property>
         <child internal-child="action_area">
-          <object class="GtkButtonBox" id="dialog-action-area">
+          <object class="GtkButtonBox" id="action-area-dialog">
             <property name="can_focus">False</property>
             <property name="layout_style">end</property>
             <child>
@@ -84,7 +85,6 @@
                     <property name="text" translatable="yes">1</property>
                     <property name="adjustment">adjustment-spin-button-number-of-workspaces</property>
                     <property name="numeric">True</property>
-                    <property name="value">1</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -137,6 +137,8 @@
                       <object class="GtkSeparator" id="separator-workspace-names-left">
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
+                        <property name="halign">baseline</property>
+                        <property name="margin_right">12</property>
                         <property name="margin_top">13</property>
                       </object>
                       <packing>
