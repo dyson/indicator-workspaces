@@ -149,7 +149,6 @@ class WorkspacesMenu(Gtk.Menu):
       timestamp = int(time.time())
       self.indicator.screen.get_workspace(number).activate(timestamp)
 
-
 class WorkspacesPreferences():
   def __init__(self, indicator):
     self.indicator = indicator
